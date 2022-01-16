@@ -25,6 +25,10 @@ var answer1 = document.createElement("button");
 var answer2 = document.createElement("button");
 var answer3 = document.createElement("button");
 var answer4 = document.createElement("button");
+answer1.setAttribute('id','answer1');
+answer2.setAttribute('id','answer2');
+answer3.setAttribute('id','answer3');
+answer4.setAttribute('id','answer4');
 answerBox.appendChild(question);
 answerBox.appendChild(answer1);
 answerBox.appendChild(answer2);
@@ -91,13 +95,25 @@ var Question5 = function () {
   answer4.textContent = "Math.round(7.25)";
 }
 
+
 // create logic for when you click an answer button
-
-
-answerBox.addEventListener("click", function () {
-  var answer = document.querySelector("answerBox");
-console.log(answer);
+answerBox.addEventListener("click", function(event) {
+ var firstAnswer = event.target.getAttribute('id');
+ if (firstAnswer === "answer1") {
+  var answerStatus = "correct"; 
+ }
+ else {
+   answerStatus = "incorrect";
+   countDown.timeLeft = countDown.timeLeft - 10;
+//this detrement does not currently work
+ }
+ var answerStatusDisplay = document.createElement("h2");
+ answerStatusDisplay.textContent = answerStatus;
+ document.body.append(answerStatusDisplay);
 });
+
+
+
 
 
 
