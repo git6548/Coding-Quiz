@@ -1,0 +1,30 @@
+.startBtn {
+    width: 200px; 
+    height: 50px; 
+    background-color: rgba(0, 255, 0, 0.521);
+    margin-top: 20%; 
+    margin-left: 40%;
+    position: absolute;
+}
+.clock {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+font-size: 40px; 
+color: purple;
+}
+.question{
+color: blue;
+display: block;    
+margin-left: 40%;
+margin-top: 20%;
+}
+.answers {
+background-color:rgba(23, 188, 230, 0.911);
+display: block;
+margin-left: 40%;
+}
+.header{
+ margin-left: 40%;   
+}
+
