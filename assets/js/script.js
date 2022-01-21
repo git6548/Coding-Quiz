@@ -10,7 +10,7 @@ function countDown() {
   var timeInterval = setInterval(function () {
     clock.textContent = timeLeft;
     timeLeft--;
-    if (timeLeft === 0) {
+    if (timeLeft <= 0) {
       clock.textContent = "Game Over!";
       clearInterval(timeInterval);
     }
@@ -125,67 +125,63 @@ answerBox.addEventListener("click", function (event) {
   if (this.className == "question1") {
     var firstAnswer = event.target.getAttribute('id');
     if (firstAnswer === "answer1") {
-      var answerStatus = "correct";
+      answerStatusDisplay.textContent = "correct";
     }
     else {
-      answerStatus = "incorrect";
+      answerStatusDisplay.textContent = "incorrect";
       timeLeft -= 10;
     }
     Question2();
+    countDown();
   }
 
   else if (this.className == "question2") {
     var secondAnswer = event.target.getAttribute('id');
     if (secondAnswer === "answer3") {
-      var answerStatus = "correct";
+      answerStatusDisplay.textContent = "correct";
     }
     else {
-      answerStatus = "incorrect";
+      answerStatusDisplay.textContent = "incorrect";
       timeLeft -= 10;
     }
     Question3();
+    countDown();
   }
 
   else if (this.className == "question3") {
     var thirdAnswer = event.target.getAttribute('id');
     if (thirdAnswer === "answer1") {
-      var answerStatus = "correct";
+      answerStatusDisplay.textContent = "correct";
     }
     else {
-      answerStatus = "incorrect";
+      answerStatusDisplay.textContent = "incorrect";
       timeLeft -= 10;
     }
     Question4();
+    countDown();
   }
 
   else if (this.className == "question4") {
     var fourthAnswer = event.target.getAttribute('id');
     if (fourthAnswer === "answer4") {
-      var answerStatus = "correct";
+      answerStatusDisplay.textContent = "correct";
     }
     else {
-      answerStatus = "incorrect";
+      answerStatusDisplay.textContent = "incorrect";
       timeLeft -= 10;
     }
     Question5();
+    countDown();
   }
   else if (this.className == "question5") {
     var fifthAnswer = event.target.getAttribute('id');
     if (fifthAnswer === "answer4") {
-      var answerStatus = "correct";
+      answerStatusDisplay.textContent = "correct";
     }
     else {
-      answerStatus = "incorrect";
+      answerStatusDisplay.textContent = "incorrect";
       timeLeft -= 10;
     }
   }
-
-else {
-    console.log("No other question")
-  }
 });
-//create a high score board
-function highScore() {
-    var name = document.createElement("h2");
 
-  }

@@ -12,10 +12,8 @@ var addHighScore = function () {
     );
 
     localStorage.setItem("highScoreName", JSON.stringify(highScoreName));
-    //var storedScores = ;
-    //localStorage.setItem("highScoreName", JSON.stringify(storedScores));
 
-    //console.log(storedScores);
+console.log(highScoreName);
 }
 
 addHighScore();
