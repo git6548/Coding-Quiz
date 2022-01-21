@@ -17,7 +17,7 @@ function countDown() {
   }, 1000);
   clock.classList.add("clock");
   document.body.append(clock);
- 
+
 }
 
 //create the question and answer containers
@@ -34,17 +34,17 @@ var answer3 = document.createElement("button");
 answer3.classList.add("answers");
 var answer4 = document.createElement("button");
 answer4.classList.add("answers");
-answer1.setAttribute('id','answer1');
-answer2.setAttribute('id','answer2');
-answer3.setAttribute('id','answer3');
-answer4.setAttribute('id','answer4');
+answer1.setAttribute('id', 'answer1');
+answer2.setAttribute('id', 'answer2');
+answer3.setAttribute('id', 'answer3');
+answer4.setAttribute('id', 'answer4');
 answerBox.appendChild(question);
 answerBox.appendChild(answer1);
 answerBox.appendChild(answer2);
 answerBox.appendChild(answer3);
 answerBox.appendChild(answer4);
 var answerStatusDisplay = document.createElement("h2");
-answerStatusDisplay.textContent="";
+answerStatusDisplay.textContent = "";
 answerBox.appendChild(answerStatusDisplay);
 
 //make start button appear and then when clicked it should disappear and display the first question and the timer
@@ -72,8 +72,8 @@ var Question1 = function () {
 }
 
 var Question2 = function () {
-answerBox.classList.remove("question1")
-answerBox.classList.add("question2")
+  answerBox.classList.remove("question1")
+  answerBox.classList.add("question2")
   question.textContent = "How to write an IF statement in JavaScript?"
   answer1.textContent = "if i == 5 then";
   answer2.textContent = "if i = 5";
@@ -84,7 +84,7 @@ answerBox.classList.add("question2")
 
 var Question3 = function () {
   answerBox.classList.remove("question2")
-answerBox.classList.add("question3")
+  answerBox.classList.add("question3")
   question.textContent = "How does a FOR loop start?";
   answer1.textContent = "for (i = 0; i <= 5; i++)";
   answer2.textContent = "for (i = 0; i <= 5)";
@@ -95,7 +95,7 @@ answerBox.classList.add("question3")
 
 var Question4 = function () {
   answerBox.classList.remove("question3")
-answerBox.classList.add("question4")
+  answerBox.classList.add("question4")
   question.textContent = "What is the correct way to write a JavaScript array?";
   answer1.textContent = "var colors = 1 = (\"red\"), 2 = (\"green\"), 3 = (\"blue\")";
   answer2.textContent = "var colors = (1:\"red\", 2:\"green\", 3:\"blue\")";
@@ -105,9 +105,9 @@ answerBox.classList.add("question4")
 }
 var Question5 = function () {
   answerBox.classList.remove("question4")
-answerBox.classList.add("question5")
-highScore = timeLeft;
-localStorage.setItem("newHighScore", highScore)
+  answerBox.classList.add("question5")
+  highScore = timeLeft;
+  localStorage.setItem("newHighScore", highScore)
   question.textContent = "How do you round the number 7.25, to the nearest integer?";
   answer1.textContent = "Math.rnd(7.25)";
   answer2.textContent = "rnd(7.25)";
@@ -118,102 +118,74 @@ localStorage.setItem("newHighScore", highScore)
 
 
 // create logic for when you click an answer button
-answerBox.addEventListener("click", function(event) {
- var firstAnswer = event.target.getAttribute('id');
-console.log(this.id)
-console.log(event)
+answerBox.addEventListener("click", function (event) {
+  console.log(this.id);
+  console.log(event);
 
-if(this.className == "question1"){
-  Question2();
-  timeLeft -=10;
-}
-else if(this.className == "question2"){
-  Question3();
-}
-else if(this.className == "question3"){
-  Question4();
-}
-else if(this.className == "question4"){
-  Question5();
-}
-else{
-  console.log("No other question")
-}
+  if (this.className == "question1") {
+    var firstAnswer = event.target.getAttribute('id');
+    if (firstAnswer === "answer1") {
+      var answerStatus = "correct";
+    }
+    else {
+      answerStatus = "incorrect";
+      timeLeft -= 10;
+    }
+    Question2();
+  }
 
-//  if (firstAnswer === "answer1") {
-//   var answerStatus = "correct"; 
-//   Question2();
-//  }
-//  else {
-//    answerStatus = "incorrect";
-//    countDown.timeLeft = countDown.timeLeft - 10;
-//    Question2();
-// //this detrement does not currently work
-//  }
-//  answerStatusDisplay.textContent = answerStatus;
+  else if (this.className == "question2") {
+    var secondAnswer = event.target.getAttribute('id');
+    if (secondAnswer === "answer3") {
+      var answerStatus = "correct";
+    }
+    else {
+      answerStatus = "incorrect";
+      timeLeft -= 10;
+    }
+    Question3();
+  }
+
+  else if (this.className == "question3") {
+    var thirdAnswer = event.target.getAttribute('id');
+    if (thirdAnswer === "answer1") {
+      var answerStatus = "correct";
+    }
+    else {
+      answerStatus = "incorrect";
+      timeLeft -= 10;
+    }
+    Question4();
+  }
+
+  else if (this.className == "question4") {
+    var fourthAnswer = event.target.getAttribute('id');
+    if (fourthAnswer === "answer4") {
+      var answerStatus = "correct";
+    }
+    else {
+      answerStatus = "incorrect";
+      timeLeft -= 10;
+    }
+    Question5();
+  }
+  else if (this.className == "question5") {
+    var fifthAnswer = event.target.getAttribute('id');
+    if (fifthAnswer === "answer4") {
+      var answerStatus = "correct";
+    }
+    else {
+      answerStatus = "incorrect";
+      timeLeft -= 10;
+    }
+  }
+
+else {
+    console.log("No other question")
+  }
 });
-
-// answerBox.addEventListener("click", function(event) {
-//   var secondAnswer = event.target.getAttribute('id');
-//   if (secondAnswer === "answer3") {
-//    var answerStatus = "correct"; 
-//    Question3();
-//   }
-//   else {
-//     answerStatus = "incorrect";
-//     countDown.timeLeft = countDown.timeLeft - 10;
-//     Question3();
-//  //this detrement does not currently work
-//   }
-//   answerStatusDisplay.textContent = answerStatus;
-//  });
- 
-//  answerBox.addEventListener("click", function(event) {
-//   var thirdAnswer = event.target.getAttribute('id');
-//   if (thirdAnswer === "answer1") {
-//    var answerStatus = "correct"; 
-//    Question4();
-//   }
-//   else {
-//     answerStatus = "incorrect";
-//     countDown.timeLeft = countDown.timeLeft - 10;
-//     Question4();
-//  //this detrement does not currently work
-//   }
-//   answerStatusDisplay.textContent = answerStatus;
-//  });
-
-//  answerBox.addEventListener("click", function(event) {
-//   var fourthAnswer = event.target.getAttribute('id');
-//   if (fourthAnswer === "answer4") {
-//    var answerStatus = "correct"; 
-//    Question5();
-//   }
-//   else {
-//     answerStatus = "incorrect";
-//     countDown.timeLeft = countDown.timeLeft - 10;
-//     Question5();
-//  //this detrement does not currently work
-//   }
-//   answerStatusDisplay.textContent = answerStatus;
-//  });
-
-//  answerBox.addEventListener("click", function(event) {
-//   var fifthAnswer = event.target.getAttribute('id');
-//   if (fifthAnswer === "answer4") {
-//    var answerStatus = "correct"; 
-
-//   }
-//   else {
-//     answerStatus = "incorrect";
-//     countDown.timeLeft = countDown.timeLeft - 10;
-//  //this detrement does not currently work
-//   }
-//   answerStatusDisplay.textContent = answerStatus;
-//  });
-
 //create a high score board
 function highScore() {
-  var name = document.createElement("h2");
- 
-}
+    var name = document.createElement("h2");
+
+  }
