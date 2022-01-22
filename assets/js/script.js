@@ -72,8 +72,8 @@ var Question1 = function () {
 }
 
 var Question2 = function () {
-  answerBox.classList.remove("question1")
-  answerBox.classList.add("question2")
+  answerBox.classList.remove("question1");
+  answerBox.classList.add("question2");
   question.textContent = "How to write an IF statement in JavaScript?"
   answer1.textContent = "if i == 5 then";
   answer2.textContent = "if i = 5";
@@ -83,8 +83,8 @@ var Question2 = function () {
 }
 
 var Question3 = function () {
-  answerBox.classList.remove("question2")
-  answerBox.classList.add("question3")
+  answerBox.classList.remove("question2");
+  answerBox.classList.add("question3");
   question.textContent = "How does a FOR loop start?";
   answer1.textContent = "for (i = 0; i <= 5; i++)";
   answer2.textContent = "for (i = 0; i <= 5)";
@@ -94,8 +94,8 @@ var Question3 = function () {
 }
 
 var Question4 = function () {
-  answerBox.classList.remove("question3")
-  answerBox.classList.add("question4")
+  answerBox.classList.remove("question3");
+  answerBox.classList.add("question4");
   question.textContent = "What is the correct way to write a JavaScript array?";
   answer1.textContent = "var colors = 1 = (\"red\"), 2 = (\"green\"), 3 = (\"blue\")";
   answer2.textContent = "var colors = (1:\"red\", 2:\"green\", 3:\"blue\")";
@@ -104,10 +104,10 @@ var Question4 = function () {
   // answer4 is correct
 }
 var Question5 = function () {
-  answerBox.classList.remove("question4")
-  answerBox.classList.add("question5")
+  answerBox.classList.remove("question4");
+  answerBox.classList.add("question5");
   highScore = timeLeft;
-  localStorage.setItem("newHighScore", highScore)
+  localStorage.setItem("newHighScore", JSON.stringify(highScore));
   question.textContent = "How do you round the number 7.25, to the nearest integer?";
   answer1.textContent = "Math.rnd(7.25)";
   answer2.textContent = "rnd(7.25)";
@@ -119,8 +119,6 @@ var Question5 = function () {
 
 // create logic for when you click an answer button
 answerBox.addEventListener("click", function (event) {
-  console.log(this.id);
-  console.log(event);
 
   if (this.className == "question1") {
     var firstAnswer = event.target.getAttribute('id');
@@ -132,7 +130,7 @@ answerBox.addEventListener("click", function (event) {
       timeLeft -= 10;
     }
     Question2();
-    countDown();
+  
   }
 
   else if (this.className == "question2") {
@@ -145,7 +143,7 @@ answerBox.addEventListener("click", function (event) {
       timeLeft -= 10;
     }
     Question3();
-    countDown();
+ 
   }
 
   else if (this.className == "question3") {
@@ -158,7 +156,7 @@ answerBox.addEventListener("click", function (event) {
       timeLeft -= 10;
     }
     Question4();
-    countDown();
+  
   }
 
   else if (this.className == "question4") {
@@ -171,17 +169,37 @@ answerBox.addEventListener("click", function (event) {
       timeLeft -= 10;
     }
     Question5();
-    countDown();
+  
   }
   else if (this.className == "question5") {
     var fifthAnswer = event.target.getAttribute('id');
     if (fifthAnswer === "answer4") {
       answerStatusDisplay.textContent = "correct";
+      addHighScore();
+      window.location.replace("./index2.html")
     }
     else {
       answerStatusDisplay.textContent = "incorrect";
       timeLeft -= 10;
+      addHighScore();
+      window.location.replace("./index2.html")
     }
   }
 });
 
+
+var addHighScore = function () {
+  var nameInitials = window.prompt("Enter your initials");
+  var highScoreName = JSON.parse(localStorage.getItem("highScoreName")) || [];
+  var newHighScore = JSON.parse(localStorage.getItem("newHighScore")) || "";
+
+  highScoreName.push(
+      {
+          initial: nameInitials,
+          highScore: newHighScore
+      }
+  );
+
+  localStorage.setItem("highScoreName", JSON.stringify(highScoreName));
+
+}
